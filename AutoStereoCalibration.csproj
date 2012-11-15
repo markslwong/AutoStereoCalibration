@@ -47,7 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnmanagedBitmap.cs" />
+    <Compile Include="Helpers\PixelData.cs" />
+    <Compile Include="Helpers\UnmanagedBitmap.cs" />
     <Compile Include="Calibration.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -56,8 +56,6 @@ namespace AutoStereoCalibration
             {
                 _images[i] = new Bitmap("Images\\sample" + (i + 1) + ".bmp");
                 _unmanagedImages[i] = new UnmanagedBitmap(_images[i]);
-
-                _unmanagedImages[i].LockBitmap();
             }
 
             UpdateVariables();
@@ -72,8 +70,6 @@ namespace AutoStereoCalibration
         private void Redraw()
         {
             var unsafeBitmap = new UnmanagedBitmap(Width, Height);
-
-            unsafeBitmap.LockBitmap();
 
             for (var px = 0; px < Width; ++px)
             {
@@ -124,9 +120,9 @@ namespace AutoStereoCalibration
                 });
             }
 
-            unsafeBitmap.UnlockBitmap();
+            this.pictureBox.Image = unsafeBitmap.SnapShot();
 
-            this.pictureBox.Image = unsafeBitmap.Bitmap;
+            unsafeBitmap.Dispose();
         }
 
         private int[] _counts = new int[8];
